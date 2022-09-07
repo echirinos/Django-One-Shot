@@ -5,6 +5,7 @@ from todos.models import TodoList
 from todos.models import TodoItem
 
 
+# to do list model
 class TodoListAdmin(admin.ModelAdmin):
     pass
 
@@ -12,6 +13,7 @@ class TodoListAdmin(admin.ModelAdmin):
 admin.site.register(TodoList, TodoListAdmin)
 
 
+# todo item model
 class TodoItemAdmin(admin.ModelAdmin):
     pass
 
