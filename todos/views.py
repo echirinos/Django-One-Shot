@@ -2,8 +2,10 @@ from django.shortcuts import render
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 from todos.models import TodoList
+from todos.models import TodoItem
 from django.views.generic.detail import DetailView
 from django.urls import reverse_lazy
+from django.urls import reverse
 
 
 # Create your views here.
@@ -49,3 +51,16 @@ class TodoListDelete(DeleteView):
     model = TodoList
     template_name = "delete.html"
     success_url = reverse_lazy("todo_list")
+
+
+class TodoItemCreate(CreateView):
+    model = TodoItem
+    template_name = "create_item.html"
+    fields = ["task", "due_date", "is_completed", "list"]
+
+    def get_success_url(self):
+        return reverse("todo_list_detail", args=[self.object.list.id])
+
+    def get_form_kwargs(self, *args, **kwargs):
+        kwargs = super(TodoItemCreate, self).get_form_kwargs(*args, **kwargs)
+        return kwargs
