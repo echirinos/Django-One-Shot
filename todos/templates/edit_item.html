@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update a Todo item</title>
+</head>
+<body>
+    <main>
+        <h1>Update Item</h1>
+            <form method="post">
+            {% comment %} <input type = "text" name="name"> {% endcomment %}
+              {% csrf_token %}
+              {{ form.as_p }}
+              <div>
+                <button>Update</button>
+              </div>
+            </form>
+          </main>
+
+</body>
+</html>

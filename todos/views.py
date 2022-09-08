@@ -64,3 +64,12 @@ class TodoItemCreate(CreateView):
     def get_form_kwargs(self, *args, **kwargs):
         kwargs = super(TodoItemCreate, self).get_form_kwargs(*args, **kwargs)
         return kwargs
+
+
+class TodoItemUpdate(UpdateView):
+    model = TodoItem
+    template_name = "edit_item.html"
+    fields = ["task", "due_date", "is_completed", "list"]
+
+    def get_success_url(self):
+        return reverse("todo_list_detail", args=[self.object.list.id])
