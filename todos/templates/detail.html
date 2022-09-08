@@ -9,26 +9,22 @@
 <body>
     <main>
         <div>
-            <h1>My Lists</h1>
+            <h1>{{todolist.name}}</h1>
+            <h2>Tasks</h2>
                 <table>
-                    <thread>
+                    <thead>
                         <tr>
-                    <th>Name</th>
-                    <th>Number of items</th>
+                    <th>Task</th>
+                    <th>Due Date</th>
                 </tr>
-                        </thread>
-
-
-
+                        </thead>
                 <tbody>
                     <tr>
-                    {%for item in todolist_list%}
-                    <td><a href="{% url 'todo_list_detail' item.pk %}">{{ item.name }}</a></td>
-
-                    <td>{{item.items.all|length}}</td>
+                    {%for task in todolist.items.all%}
+                    <td>{{task.task}}</td>
+                    <td>{{task.due_date}}</td>
                     </tr>
                     {%endfor%}
-
 
 
                 </div>
