@@ -43,3 +43,9 @@ class TodoListUpdate(UpdateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+
+class TodoListDelete(DeleteView):
+    model = TodoList
+    template_name = "delete.html"
+    success_url = reverse_lazy("todo_list")
