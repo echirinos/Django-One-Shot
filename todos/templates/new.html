@@ -8,15 +8,18 @@
 </head>
 <body>
     <main>
+        <div>
         <h1>Create a new list</h1>
             <form method="post">
             {% comment %} <input type = "text" name="name"> {% endcomment %}
               {% csrf_token %}
               {{ form.as_p }}
               <div>
-                <button>Submit</button>
+                <button>Create</button>
               </div>
             </form>
+
+        </div>
           </main>
 
 </body>

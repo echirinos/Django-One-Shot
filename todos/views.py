@@ -19,7 +19,7 @@ class TodoListView(ListView):
 
 class TodoListDetail(DetailView):
     model = TodoList
-    template_name = "detail.html/"
+    template_name = "detail.html"
 
     # def get_queryset(self):
     #     return TodoList.objects.all()
@@ -29,28 +29,32 @@ class TodoListCreate(CreateView):
     model = TodoList
     template_name = "new.html"
     fields = ["name"]
-    success_url = reverse_lazy("todo_list")
 
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+    def get_success_url(self) -> str:
+        return reverse_lazy("todo_list_detail", args=[self.object.id])
 
 
 class TodoListUpdate(UpdateView):
     model = TodoList
     template_name = "new.html"
     fields = ["name"]
-    success_url = reverse_lazy("todo_list")
 
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
+    def get_success_url(self) -> str:
+        return reverse_lazy("todo_list_detail", args=[self.object.id])
+
 
 class TodoListDelete(DeleteView):
     model = TodoList
     template_name = "delete.html"
-    success_url = reverse_lazy("todo_list")
+    success_url = reverse_lazy("todo_list_list")
 
 
 class TodoItemCreate(CreateView):

@@ -8,16 +8,15 @@
 </head>
 <body>
     <main>
+        <div>
         <h1>Update Item</h1>
             <form method="post">
-            {% comment %} <input type = "text" name="name"> {% endcomment %}
               {% csrf_token %}
               {{ form.as_p }}
-              <div>
-                <button>Update</button>
-              </div>
+                <button>update</button>
             </form>
-          </main>
+        </div>
+    </main>
 
 </body>
 </html>
